@@ -350,3 +350,7 @@ object {
 .gallery-caption {
 	display: block;
 }
+
+.admin-bar .navbar-fixed-top {
+    top: 32px;
+}

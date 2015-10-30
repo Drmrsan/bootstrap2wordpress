@@ -49,7 +49,7 @@
                         </button>
                         <a class="navbar-brand" href="/"><img src="<?php bloginfo('stylesheet_directory') ?>/assets/img/logo.png" alt="Bootstrap to WordPress"></a>
                     </div><!--navbar-header-->
-                        
+                       
                         <?php 
 
                         	wp_nav_menu( array(
