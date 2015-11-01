@@ -117,6 +117,7 @@ function bootstrap2wordpress_scripts() {
 	wp_enqueue_style( 'bootstrap2wordpress-style', get_stylesheet_uri() );
 	wp_enqueue_style( 'bootstrap-style', get_template_directory_uri() . '/assets/css/bootstrap.min.css' );
 	wp_enqueue_style( 'font-awesome-style', get_template_directory_uri() . '/assets/css/font-awesome/css/font-awesome.min.css' );
+	wp_enqueue_style( 'font-custom-style', 'http://fonts.googleapis.com/css?family=Raleway:400,700' );
 	wp_enqueue_style( 'custom-style', get_template_directory_uri() . '/assets/css/custom.css' );
 
 	wp_enqueue_script( 'bootstrap2wordpress-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );

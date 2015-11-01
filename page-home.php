@@ -19,10 +19,21 @@ $optin_button_text	= get_post_meta( 7, 'optin_button_text', true);
 $income_feature_image	= get_field( 'income_feature_image' );
 $income_section_title	= get_field( 'income_section_title' );
 $income_section_desc	= get_field( 'income_section_description' );
+
 $reason_1				= get_field( 'reason_1_title' );
 $reason_1_desc			= get_field( 'reason_1_description' );
 $reason_2				= get_field( 'reason_2_title' );
 $reason_2_desc			= get_field( 'reason_2_description' );
+
+
+$who_feature_image		= get_field( 'who_feature_image' );
+$who_section_title		= get_field( 'who_section_title' );
+$who_section_body		= get_field( 'who_section_body' );
+
+$features_section_image = get_field( 'features_section_image' );
+$features_section_title = get_field( 'features_section_title' );
+$features_section_body = get_field( 'features_section_body' );
+
 
 
 get_header(); ?>
@@ -106,7 +117,7 @@ get_header(); ?>
                 
 	                <?php if ( !empty ($income_feature_image) ) : ?>
 
-	                	<img src=" <?php echo $income_feature_image['url']; ?>" alt-" <?php echo $income_feature_image['alt']; ?>">
+	                	<img src=" <?php echo $income_feature_image['url']; ?>" alt=" <?php echo $income_feature_image['alt']; ?>">
 
 	           		<?php endif; ?>
 
@@ -138,24 +149,26 @@ get_header(); ?>
             <div class="container">
                 
                 <div class="section-header">
-                    <img src="<?php bloginfo('stylesheet_directory'); ?>/assets/img/icon-pad.png" alt="Pad and pencil">
-                    <h2>Who Should Take This Course</h2>
-                </div>
+                    <!-- if user uploaded an image -->
+                
+	                <?php if ( !empty ($who_feature_image) ) : ?>
 
-                <div class="row">
+	                	<img src=" <?php echo $who_feature_image['url']; ?>" alt=" <?php echo $who_feature_image['alt']; ?>">
+
+	           		<?php endif; ?>
+
+	           		<h2><?php echo $who_section_title; ?></h2>
+
+	           	</div>
+				
+				<div class="row">
                     <div class="col-sm-8 col-sm-offset-2">
-                        
-                        <h3>Graphics &amp Web Designers</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At aliquid quam ea, non atque vel veniam, reprehenderit illum, obcaecati illo numquam nesciunt magni ratione ipsa maxime molestiae laboriosam deleniti voluptate!lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus provident dolorum, magni quia. Facere doloribus soluta molestias cum, vitae, dignissimos non eum porro animi atque cupiditate, sint molestiae omnis assumenda.</p>
+					
+						<p><?php echo $who_section_body; ?></p>
 
-                        <h3>Entrepreneurs</h3>
-                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At aliquid quam ea, non atque vel veniam, reprehenderit illum, obcaecati illo numquam nesciunt magni ratione ipsa maxime molestiae laboriosam deleniti voluptate!lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus provident dolorum, magni quia. Facere doloribus soluta molestias cum, vitae, dignissimos non eum porro animi atque cupiditate, sint molestiae omnis assumenda.</p>
+					</div>
 
-                        <h3>Employes</h3>
-                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At aliquid quam ea, non atque vel veniam, reprehenderit illum, obcaecati illo numquam nesciunt magni ratione ipsa maxime molestiae laboriosam deleniti voluptate!lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus provident dolorum, magni quia. Facere doloribus soluta molestias cum, vitae, dignissimos non eum porro animi atque cupiditate, sint molestiae omnis assumenda.</p>
-
-                    </div>
-                </div>
+				</div>
 
             </div>
         </section>
@@ -167,42 +180,39 @@ get_header(); ?>
             <div class="container">
                 
                 <div class="section-header">
-                    <img src="<?php bloginfo('stylesheet_directory'); ?>/assets/img/icon-rocket.png" alt="Rocket">
-                    <h2>Course Features</h2>
+                    <!-- if user uploaded an image -->
+                
+	                <?php if ( !empty ($features_section_image) ) : ?>
+
+	                	<img src=" <?php echo $features_section_image['url']; ?>" alt=" <?php echo $features_section_image['alt']; ?>">
+
+	           		<?php endif; ?>
+
+                    <h2><?php echo $features_section_title; ?></h2>
+
+					<!-- if user add description -->
+					
+					<?php if ( !empty ($features_section_body) ) : ?>
+                    	
+                    	<p class="lead"><?php echo $features_section_body; ?></p>
+                    
+                    <?php endif; ?>
+
                 </div>
 
                 <div class="row">
-                    
-                    <div class="col-sm-2">
-                        <i class="ci ci-watch"></i>
-                        <h4>Lifetime access for 80+ lectures</h4>
+
+					<?php $loop = new WP_Query (array ( 'post_type' => 'course_feature', 'orderby' => 'post_id', 'order' => 'ACS'));  ?>
+
+                    <?php while( $loop->have_posts() ): $loop->the_post(); ?>
+		
+					<div class="col-sm-2">
+                        <i class="<?php the_field('course_feature_icon'); ?>"></i>
+                        <h4><?php the_title(); ?></h4>
                     </div>
 
-                    <div class="col-sm-2">
-                        <i class="ci ci-computer"></i>
-                        <h4>10+ hours of HD content</h4>
-                    </div>
-
-                    <div class="col-sm-2">
-                        <i class="ci ci-calendar"></i>
-                        <h4>30-day money back garantee</h4>
-                    </div>
-
-                    <div class="col-sm-2">
-                        <i class="ci ci-community"></i>
-                        <h4>Access to a community of like-minded students</h4>
-                    </div>
-
-                    <div class="col-sm-2">
-                        <i class="ci ci-instructor"></i>
-                        <h4>Direct access to the instructor</h4>
-                    </div>
-
-                    <div class="col-sm-2">
-                        <i class="ci ci-device"></i>
-                        <h4>Accessible content on your mobile devices</h4>
-                    </div>
-                
+                    <?php endwhile; ?>
+                   
                 </div> <!-- row -->
             </div><!-- container -->
         
